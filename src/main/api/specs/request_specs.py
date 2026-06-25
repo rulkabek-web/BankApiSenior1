@@ -15,9 +15,10 @@ class RequestSpecs:
 
     @staticmethod
     def auth_headers(username: str, password: str):
+        backend_url = Config.fetch('backendUrl')
         login_request = LoginUserRequest(username=username, password=password)
         login_admin_response = requests.post(
-            url=f"{Config.fetch('backendUrl')}/auth/token/login",
+            url=f"{backend_url}/auth/token/login",
             json=login_request.model_dump(),
             headers=RequestSpecs.base_headers()
         )
