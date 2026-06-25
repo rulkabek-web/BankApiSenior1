@@ -1,13 +1,11 @@
-from enum import Enum
-
 from src.main.api.models.create_user_request_model import CreateUserRequest
 from src.main.api.models.create_user_response_model import CreateUserResponse
 from src.main.api.models.login_user_request_model import LoginUserRequest
 from src.main.api.models.login_user_response_model import LoginUserResponse
-
 from src.main.api.models.base_model import BaseModel
 from typing import Optional, Type
 from dataclasses import dataclass
+from enum import Enum
 
 @dataclass
 class EndpointConfiguration:
