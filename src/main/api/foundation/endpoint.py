@@ -1,7 +1,7 @@
 from enum import Enum
 
-from models.create_user_request_model import CreateUserRequest
-from models.create_user_response_model import CreateUserResponse
+from src.main.api.models.create_user_request_model import CreateUserRequest
+from src.main.api.models.create_user_response_model import CreateUserResponse
 from src.main.api.models.login_user_request_model import LoginUserRequest
 from src.main.api.models.login_user_response_model import LoginUserResponse
 
