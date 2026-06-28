@@ -13,7 +13,7 @@ class RandomModelGenerator:
 
         for field_name, annotated_type in type_hints.items():
             rule = None
-            actual_type = annotated_type()
+            actual_type = annotated_type
 
             if get_origin(annotated_type) is Annotated:
                 actual_type, *annotations = get_args(annotated_type)
@@ -46,12 +46,12 @@ class RandomModelGenerator:
         elif field_type is int:
             return random.randint(1, 9999)
         elif field_type is float:
-            return random.uniform(0, 100 ), 2
+            return round(random.uniform(0, 100 ), 2)
         elif field_type is bool:
             return random.choice([True, False])
         elif field_type is list:
-            return [str(uuid.uuid4())[:5]]
+            return [str(uuid.uuid4())[:5]] #возвращает список [] из 1 строки
         elif isinstance(field_type, type):
-            return RandomModelGenerator.generate(field_type)
+            return RandomModelGenerator.generate(field_type) #рекурсия для вложенных моделей если тип это класс
         return None
 

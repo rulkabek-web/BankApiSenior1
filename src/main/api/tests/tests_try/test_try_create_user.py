@@ -9,7 +9,7 @@ class TestCreateUser:
         [RandomModelGenerator.generate(CreateUserRequest)]
     )
     def test_try_create_user(self, api_manager,create_user_request):
-        
+        print(create_user_request, "!!!!!!!!!!!!!!!!!!!!!!!")
 
         create_user_response = api_manager.admin_steps.create_user(create_user_request)
 
