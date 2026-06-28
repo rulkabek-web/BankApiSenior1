@@ -1,3 +1,5 @@
+from src.main.api.models.deposit_request_model import DepositRequest
+from src.main.api.models.deposit_response_model import DepositResponse
 from src.main.api.models.create_user_request_model import CreateUserRequest
 from src.main.api.models.create_user_response_model import CreateUserResponse
 from src.main.api.models.login_user_request_model import LoginUserRequest
@@ -35,4 +37,9 @@ class Endpoint(Enum):
         request_model=None,
         response_model=CreateAccountResponse,
         url="/account/create"
+    )
+    DEPOSIT = EndpointConfiguration(
+        request_model=DepositRequest,
+        response_model=DepositResponse,
+        url="/account/deposit"
     )
