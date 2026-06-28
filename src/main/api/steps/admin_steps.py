@@ -1,3 +1,4 @@
+from models.login_user_request_model import LoginUserRequest
 from src.main.api.foundation.endpoint import Endpoint
 from src.main.api.foundation.requesters.validate_crud_requester import ValidateCrudRequester
 from src.main.api.foundation.requesters.crud_requester import CrudRequester
@@ -25,3 +26,18 @@ class AdminSteps(BaseSteps):
             response_spec=ResponseSpecs.request_ok(),
             endpoint=Endpoint.ADMIN_DELETE_USER
         ).delete(user_id)
+
+    def create_invalid_user(self, create_user_request: CreateUserRequest):
+        CrudRequester(
+            request_spec=RequestSpecs.auth_headers(username="admin", password="123456"),
+            response_spec=ResponseSpecs.request_bad(),
+            endpoint=Endpoint.ADMIN_CREATE_USER
+        ).post(create_user_request)
+
+    def login_user(self, login_user_request: LoginUserRequest):
+        login_user_response = ValidateCrudRequester(
+            request_spec=RequestSpecs.unauth_headers(),
+            response_spec=ResponseSpecs.request_ok(),
+            endpoint=Endpoint.LOGIN_USER
+        ).post(login_user_request)
+        return login_user_response

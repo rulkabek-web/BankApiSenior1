@@ -2,6 +2,8 @@ from src.main.api.models.create_user_request_model import CreateUserRequest
 from src.main.api.models.create_user_response_model import CreateUserResponse
 from src.main.api.models.login_user_request_model import LoginUserRequest
 from src.main.api.models.login_user_response_model import LoginUserResponse
+from src.main.api.models.create_account_response_model import CreateAccountResponse
+
 from src.main.api.models.base_model import BaseModel
 from typing import Optional, Type
 from dataclasses import dataclass
@@ -28,4 +30,9 @@ class Endpoint(Enum):
         request_model=None,
         response_model=None,
         url="/admin/users"
+    )
+    CREATE_ACCOUNT = EndpointConfiguration(
+        request_model=None,
+        response_model=CreateAccountResponse,
+        url="/account/create"
     )
