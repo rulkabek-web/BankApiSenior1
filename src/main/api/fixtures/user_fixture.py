@@ -8,12 +8,14 @@ from src.main.api.generators.model_generator import RandomModelGenerator
 def create_user_request(api_manager):
     user_request = RandomModelGenerator.generate(CreateUserRequest)
     api_manager.admin_steps.create_user(user_request)
+
     return user_request
 
 @pytest.fixture
 def create_another_user_request(api_manager):
     another_user_request = RandomModelGenerator.generate(CreateUserRequest)
     api_manager.admin_steps.create_user(another_user_request)
+
     return another_user_request
 
 @pytest.fixture

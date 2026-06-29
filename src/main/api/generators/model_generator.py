@@ -7,11 +7,16 @@ from src.main.api.generators.creation_rule import CreationRule
 
 class RandomModelGenerator:
     @staticmethod
-    def generate(cls: type) -> Any:
+    def generate(cls: type, **overrides) -> Any:
         type_hints = get_type_hints(cls, include_extras=True)
         init_data = {}
 
         for field_name, annotated_type in type_hints.items():
+
+            if field_name in overrides:
+                init_data[field_name] = overrides[field_name]
+                continue
+
             rule = None
             actual_type = annotated_type
 
