@@ -5,6 +5,11 @@ from src.main.api.models.create_user_response_model import CreateUserResponse
 from src.main.api.models.login_user_request_model import LoginUserRequest
 from src.main.api.models.login_user_response_model import LoginUserResponse
 from src.main.api.models.create_account_response_model import CreateAccountResponse
+from src.main.api.models.transfer_request_model import TransferRequest
+from src.main.api.models.transfer_response_model import TransferResponse
+from src.main.api.models.transactions_response_model import TransactionsResponse
+from src.main.api.models.credit_request_model import CreditRequest
+from src.main.api.models.credit_response_model import CreditResponse
 
 from src.main.api.models.base_model import BaseModel
 from typing import Optional, Type
@@ -42,4 +47,19 @@ class Endpoint(Enum):
         request_model=DepositRequest,
         response_model=DepositResponse,
         url="/account/deposit"
+    )
+    TRANSFER = EndpointConfiguration(
+        request_model=TransferRequest,
+        response_model=TransferResponse,
+        url="/account/transfer"
+    )
+    TRANSACTIONS = EndpointConfiguration(
+        request_model=None,
+        response_model=TransactionsResponse,
+        url="/account/transactions"
+    )
+    CREDIT_REQUEST = EndpointConfiguration(
+        request_model=CreditRequest,
+        response_model=CreditResponse,
+        url="/credit/request"
     )

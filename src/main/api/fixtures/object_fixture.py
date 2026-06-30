@@ -20,7 +20,6 @@ def created_accounts(created_object):
     yield objects
 
 def clean_user(objects: List[Any]):
-    print(objects)
     api_manager = ApiManager(objects)
     for u in objects:
         if isinstance(u, CreateUserResponse):
