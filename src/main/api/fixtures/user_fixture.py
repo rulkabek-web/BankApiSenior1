@@ -127,13 +127,13 @@ def invalid_transfer_requests(api_manager, deposit_requests, account_id, another
 
 @pytest.fixture
 def create_credit_user_request(api_manager):
-    user_request = RandomModelGenerator.generate(
+    credit_user_request = RandomModelGenerator.generate(
         CreateUserRequest,
         role="ROLE_CREDIT_SECRET"
     )
-    api_manager.admin_steps.create_user(user_request)
+    api_manager.admin_steps.create_user(credit_user_request)
 
-    return user_request
+    return credit_user_request
 
 @pytest.fixture
 def credit_account_id(api_manager, create_credit_user_request):
@@ -142,7 +142,7 @@ def credit_account_id(api_manager, create_credit_user_request):
     account_id = create_account.id
 
     response = {"create_user_request": create_credit_user_request, "id": account_id }
-    print("!!!!!!!!!!!!!!", response)
+
     return response
 
 @pytest.fixture
@@ -151,8 +151,8 @@ def credit(api_manager, credit_account_id):
         CreditRequest,
         accountId=credit_account_id.get("id")
     )
-    print("!!!!!!!!!!!!!!", credit_request)
-    create_user_request = credit_account_id.get("create_credit_user_request")
+
+    create_user_request = credit_account_id.get("create_user_request")
 
     requests = {"create_user_request": create_user_request, "credit_request": credit_request}
 

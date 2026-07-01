@@ -45,13 +45,19 @@ class RandomModelGenerator:
         return generated
 
     @staticmethod
-    def generate_value(field_type: type):
+    def generate_value(
+            field_type: type,
+            min_int:int = 1,
+            max_int:int = 9999,
+            min_float:float = 0,
+            max_float:float = 100
+                       ) -> Any:
         if field_type is str:
             return str(uuid.uuid4())[:8]
         elif field_type is int:
-            return random.randint(1, 9999)
+            return random.randint(min_int, max_int)
         elif field_type is float:
-            return round(random.uniform(0, 100 ), 2)
+            return round(random.uniform(min_float, max_float ), 2)
         elif field_type is bool:
             return random.choice([True, False])
         elif field_type is list:
