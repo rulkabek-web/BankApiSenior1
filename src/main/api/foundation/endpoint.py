@@ -1,3 +1,4 @@
+from src.main.api.models.credit_history_response_model import CreditHistoryResponse
 from src.main.api.models.deposit_request_model import DepositRequest
 from src.main.api.models.deposit_response_model import DepositResponse
 from src.main.api.models.create_user_request_model import CreateUserRequest
@@ -10,6 +11,9 @@ from src.main.api.models.transfer_response_model import TransferResponse
 from src.main.api.models.transactions_response_model import TransactionsResponse
 from src.main.api.models.credit_request_model import CreditRequest
 from src.main.api.models.credit_response_model import CreditResponse
+from src.main.api.models.credit_repay_request_model import CreditRepayRequest
+from src.main.api.models.credit_repay_response_model import CreditRepayResponse
+
 
 from src.main.api.models.base_model import BaseModel
 from typing import Optional, Type
@@ -62,4 +66,14 @@ class Endpoint(Enum):
         request_model=CreditRequest,
         response_model=CreditResponse,
         url="/credit/request"
+    )
+    CREDIT_REPAY = EndpointConfiguration(
+        request_model=CreditRepayRequest,
+        response_model=CreditRepayResponse,
+        url="/credit/repay"
+    )
+    CREDIT_HISTORY = EndpointConfiguration(
+        request_model=None,
+        response_model=CreditHistoryResponse,
+        url="/credit/history"
     )

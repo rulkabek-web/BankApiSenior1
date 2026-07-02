@@ -1,6 +1,5 @@
 from datetime import datetime
 from typing  import Optional
-
 from src.main.api.models.base_model import BaseModel
 
 class Transaction(BaseModel):

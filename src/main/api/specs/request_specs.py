@@ -4,14 +4,15 @@ from src.main.api.configs.config import Config
 from src.main.api.models.login_user_request_model import LoginUserRequest
 from src.main.api.models.login_user_response_model import LoginUserResponse
 
+
 class RequestSpecs:
 
     @staticmethod
     def base_headers():
         return {
-                "accept": "application/json",
-                "Content-Type": "application/json"
-            }
+            "accept": "application/json",
+            "Content-Type": "application/json"
+        }
 
     @staticmethod
     def auth_headers(username: str, password: str):
@@ -35,4 +36,3 @@ class RequestSpecs:
     @staticmethod
     def unauth_headers():
         return RequestSpecs.base_headers()
-        

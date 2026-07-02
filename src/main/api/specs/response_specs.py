@@ -1,6 +1,7 @@
 from http import HTTPStatus
 from requests import Response
 
+
 class ResponseSpecs:
     @staticmethod
     def request_ok():

@@ -1,6 +1,4 @@
-from models.login_user_request_model import LoginUserRequest
-
-
+from src.main.api.models.login_user_request_model import LoginUserRequest
 
 class TestLoginUser:
     def test_try_login_admin(self, api_manager):
