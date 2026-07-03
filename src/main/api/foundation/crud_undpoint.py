@@ -1,7 +1,5 @@
 from typing import Protocol, Optional
-
 from requests import Response
-
 from src.main.api.models.base_model import BaseModel
 
 class CrudEndpoint(Protocol):

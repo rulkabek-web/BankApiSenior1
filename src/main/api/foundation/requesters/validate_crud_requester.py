@@ -1,9 +1,7 @@
-
-
-from foundation.http_requester import HttpRequester
-from foundation.requesters.crud_requester import CrudRequester
+from src.main.api. foundation.http_requester import HttpRequester
+from src.main.api.foundation.requesters.crud_requester import CrudRequester
 from src.main.api.models.base_model import BaseModel
-
+from typing import Optional
 
 class ValidateCrudRequester(HttpRequester):
     def __init__(self, request_spec, endpoint, response_spec):
@@ -14,7 +12,8 @@ class ValidateCrudRequester(HttpRequester):
             response_spec=response_spec
         )
 
-    def post(self, model: BaseModel) -> BaseModel:
+    def post(self, model: Optional[BaseModel] = None) -> Optional[BaseModel]:
+
         response = self.crud_requester.post(model)
         self.response_spec(response)
         return self.endpoint.value.response_model.model_validate(response.json())
@@ -22,4 +21,10 @@ class ValidateCrudRequester(HttpRequester):
     def delete(self, user_id: int):
         response = self.crud_requester.delete(user_id)
         self.response_spec(response)
-        return self.endpoint.value.respose_model.model_validate(response.json())
+        return self.endpoint.value.response_model.model_validate(response.json())
+
+    def get(self, account_id: Optional[int] = "") -> Optional[BaseModel]:
+
+        response = self.crud_requester.get(account_id)
+        self.response_spec(response)
+        return self.endpoint.value.response_model.model_validate(response.json())
