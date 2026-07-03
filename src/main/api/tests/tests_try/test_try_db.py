@@ -43,3 +43,5 @@ class TestCreateUser:
         account_from_db = Account.get_account_by_id(db_session, create_account_response.id)
         assert account_from_db.id == create_account_response.id, "Аккаунт не создан, аккаунта нет в бд"
         assert account_from_db.balance is not None, "поле баланс отсутсвует"
+
+
